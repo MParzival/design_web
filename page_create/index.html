@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GSAP Menu</title>
+    <link rel="stylesheet" href="style.css">
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
+</head>
+<body>
+    <h1>Create.</h1>
+    <div class="barres">
+        <div class="hamburger"></div>
+    </div>
+    <div class="menu">
+
+             <ul>
+                  <li><a href="#">Accueil</a></li>
+                  <li><a href="#">Notre Équipe</a></li>
+                  <li><a href="#">Nos Projets</a></li>
+                  <li><a href="#">Contact</a></li>
+             </ul>
+
+   </div>
+    
+
+   <script>
+   // Toggle Icone hamburger
+    $(document).ready(function(){
+        $('.barres').click(function(){
+            $('.barres').toggleClass('active');
+        })
+    })
+
+
+    // Greensock Animations
+
+    var timeline = new TimelineMax();
+
+    timeline.to(".menu", 1.5, {left: '0%',ease: Expo.easeInOut, delay: -1.5});
+    timeline.staggerFrom(".menu ul li", 0.4, {x: -100, opacity: 0}, 0.1);
+    
+    timeline.reverse();
+   
+    $(document).on('click', '.barres', function(){
+        timeline.play();
+    });
+    $(document).on('click', 'a', function(){
+        timeline.reverse();
+        $('.barres').toggleClass('active');
+    })
+
+   </script>
+
+</body>
+</html>
